@@ -1,0 +1,29 @@
+.hero {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.hero_image {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+@media only screen and (min-width: 767px) {
+	.hero {
+		justify-content: space-between;
+	}
+
+	.hero_picture {
+		order: 2;
+	}
+
+	.hero_image {
+		max-width: 780px;
+	}
+
+	.hero_content {
+		max-width: 540px;
+	}
+}

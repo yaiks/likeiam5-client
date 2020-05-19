@@ -1,0 +1,15 @@
+.root {
+	display: block;
+	position: relative;
+	padding: 76px 20px;
+	min-height: 100%;
+	width: 100%;
+	max-width: 1560px;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width: 767px) {
+	.root {
+		padding: 100px;
+	}
+}

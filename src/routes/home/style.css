@@ -1,5 +1,116 @@
 .home {
-	padding: 56px 20px;
+	display: block;
+	position: relative;
+	padding: 76px 20px;
 	min-height: 100%;
 	width: 100%;
+	max-width: 1560px;
+	margin: 0 auto;
+}
+
+.header {
+	text-align: center;
+	max-width: 590px;
+	margin: 0 auto 35px;
+}
+
+.category_filter {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.category_labels {
+	width: 100%;
+	order: 3;
+	margin-top: 25px;
+	border-top: 1px solid #efefef;
+}
+
+.category_labels > ul {
+	display: flex;
+	align-items: center;
+	overflow-x: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding: 0;
+}
+
+.category_labels > ul::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+.category_labels > ul > li {
+	margin-right: 15px;
+	list-style-type: none;
+}
+
+.posts {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(6, 340px);
+	grid-gap: 20px;
+}
+
+.post {
+	/* overflow-y: hidden; */
+}
+
+.post_content {
+	mask-image: -webkit-gradient(
+		linear,
+		left 50%,
+		left bottom,
+		from(rgba(0, 0, 0, 1)),
+		to(rgba(0, 0, 0, 0))
+	);
+	overflow-y: hidden;
+	max-height: 300px;
+}
+
+.post_info {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.post_author {
+	margin-right: 15px;
+}
+
+@media only screen and (min-width: 767px) {
+	.home {
+		padding: 100px;
+	}
+
+	.header {
+		border-bottom: 1px solid #efefef;
+		padding-bottom: 20px;
+	}
+
+	.category_type {
+		width: 120px;
+		margin-right: 50px;
+	}
+
+	.category_labels {
+		width: auto;
+		order: 2;
+		margin-top: 0;
+		border-top: none;
+		max-width: 480px;
+	}
+
+	.category_searchbar {
+		order: 3;
+	}
+
+	.posts {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(auto-fill, 280px);
+		column-gap: 150px;
+		row-gap: 100px;
+	}
 }
