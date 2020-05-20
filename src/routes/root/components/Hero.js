@@ -16,12 +16,12 @@ const Hero = () => (
 		</picture>
 		<div class={style.hero_content}>
 			<h1>Learn hard concepts in a simple manner</h1>
-			<p>
+			<p class={style.hero_subtitle}>
 				Some things are complex, but with the right approach and explaination,
 				anyone can learn anything!
 			</p>
-			<button>More about us</button>
-			<p>
+			<button class={style.hero_button}>More about us</button>
+			<p class={style.hero_link}>
 				Know much about something? <a href=''>start writing and monetize</a>
 			</p>
 		</div>

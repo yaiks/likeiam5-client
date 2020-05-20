@@ -29,7 +29,7 @@ const Body = () => (
 				<div class={style.post}>
 					<a href={post.url}>
 						<h3 class={style.post_title}>{post.title}</h3>
-						<p class={style.post_title}>{post.subtitle}</p>
+						<p class={style.post_subtitle}>{post.subtitle}</p>
 					</a>
 				</div>
 			))}
@@ -42,7 +42,7 @@ const Body = () => (
 				access to special content made by creators, to help further explain hard
 				and complex concepts
 			</p>
-			<div>
+			<div class={style.monetization_steps}>
 				<div>step 1</div>
 				<div>step 2</div>
 				<div>step 3</div>

@@ -12,6 +12,22 @@
 
 .post_title {
 	font-size: 2rem;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: #333;
+}
+
+.monetization_info {
+	background-color: #efefef;
+	padding: 30px 40px;
+}
+
+.monetization_info > h2 {
+	margin: 0 0 10px;
+}
+
+.monetization_steps {
+	margin: 30px 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
