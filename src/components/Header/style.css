@@ -37,3 +37,10 @@
 	color: rgb(69, 75, 95);
 	will-change: background-color;
 }
+
+@media only screen and (min-width: 767px) {
+	.header_content {
+		max-width: 1300px;
+		margin: 0 auto;
+	}
+}

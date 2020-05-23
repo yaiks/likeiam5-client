@@ -9,7 +9,7 @@ const Home = () => (
 	<section class={style.home}>
 		<header class={style.header}>
 			<h1>Start writing and sharing your knowledge</h1>
-			<button>Write</button>
+			<Link href='/editor'>Write</Link>
 		</header>
 		<div class={style.filter_container}>
 			<div class={style.category_filter}>

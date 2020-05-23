@@ -5,17 +5,19 @@ import style from "./style.css";
 const Header = () => {
 	return (
 		<header class={style.header}>
-			<Link href='/'>
-				<h1>Preact App</h1>
-			</Link>
-			<nav>
-				<Link activeClassName={style.active} href='/home'>
-					Home
+			<div class={style.header_content}>
+				<Link href='/'>
+					<h1>Preact App</h1>
 				</Link>
-				<Link activeClassName={style.active} href='/profile/john'>
-					John
-				</Link>
-			</nav>
+				<nav>
+					<Link activeClassName={style.active} href='/home'>
+						Home
+					</Link>
+					<Link activeClassName={style.active} href='/profile/john'>
+						John
+					</Link>
+				</nav>
+			</div>
 		</header>
 	);
 };
