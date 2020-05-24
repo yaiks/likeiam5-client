@@ -11,11 +11,11 @@ const Header = () => {
 		<header class={style.header}>
 			<div class={style.header_content}>
 				<Link href='/'>
-					<h1>Preact App</h1>
+					<h1>xplain</h1>
 				</Link>
 				<nav>
-					<Link href='/home' class={style.header_link}>
-						Home
+					<Link href='/explore' class={style.header_link}>
+						Explore
 					</Link>
 					{user ? (
 						<Fragment>

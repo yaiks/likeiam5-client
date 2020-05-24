@@ -1,12 +1,12 @@
 import { h, Component } from "preact";
-import { Router } from "preact-router";
+import { Router, route } from "preact-router";
 
 import Header from "./Header";
-import { AuthProvider } from "../context/auth";
+import { AuthProvider, useAuth } from "context/auth";
 
 // Code-splitting is automated for routes
 import Root from "routes/root";
-import Home from "routes/home";
+import Explore from "routes/explore";
 import Editor from "routes/editor";
 import Login from "routes/login";
 import Profile from "routes/profile";
@@ -17,6 +17,12 @@ export default class App extends Component {
 	 *	@param {string} event.url	The newly routed URL
 	 */
 	handleRoute = (e) => {
+		const { user } = useAuth();
+		switch (e.url) {
+			case "/editor":
+				if (!user) route("/login", true);
+				break;
+		}
 		this.currentUrl = e.url;
 	};
 
@@ -27,7 +33,7 @@ export default class App extends Component {
 					<Header />
 					<Router onChange={this.handleRoute}>
 						<Root path='/' />
-						<Home path='/home' />
+						<Explore path='/explore' />
 						<Editor path='/editor' />
 						<Login path='/login' />
 						<Profile path='/profile/' user='me' />

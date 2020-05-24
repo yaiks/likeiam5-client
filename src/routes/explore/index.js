@@ -8,7 +8,7 @@ import posts from "./mock";
 
 // filter as Dribbble alike
 // https://dribbble.com/search/shots/popular/animation?q=tags
-const Home = () => {
+const Explore = () => {
 	return (
 		<Layout>
 			<header class={style.header}>
@@ -61,4 +61,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Explore;

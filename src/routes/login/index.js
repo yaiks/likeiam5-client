@@ -18,7 +18,10 @@ const Login = () => {
 						}
 					/>
 					<p class={style.divisor}>or</p>
-					<a class={style.google_login} href='/login/google'>
+					<a
+						class={style.google_login}
+						href={`${process.env.API_URL}/login/google`}
+					>
 						Login with google
 					</a>
 					<span class={style.signup}>
