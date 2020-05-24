@@ -1,6 +1,5 @@
 import { h } from "preact";
 import { useEffect, useRef } from "preact/hooks";
-import Quill from "quill";
 
 import style from "./style";
 
@@ -12,13 +11,16 @@ export const QuillEditor = ({ theme, placeholder }) => {
 	useEffect(() => {
 		if (!element) return;
 
-		quill = new Quill(element.current, {
-			theme,
-			placeholder,
-			modules: {
-				toolbar: "#toolbar",
-			},
-		});
+		if (typeof window !== "undefined") {
+			const Quill = require("quill");
+			quill = new Quill(element.current, {
+				theme,
+				placeholder,
+				modules: {
+					toolbar: "#toolbar",
+				},
+			});
+		}
 	}, []);
 
 	return <div class={style.editor_container} ref={element} />;

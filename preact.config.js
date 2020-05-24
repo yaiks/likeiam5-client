@@ -16,10 +16,12 @@ export default (config, env, helpers) => {
 		)
 	);
 
-	config.devServer.proxy = [
-		{
-			path: "/login/google",
-			target: process.env.API_URL,
-		},
-	];
+	if (config.devServer) {
+		config.devServer.proxy = [
+			{
+				path: "/login/google",
+				target: process.env.API_URL,
+			},
+		];
+	}
 };
