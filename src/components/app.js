@@ -2,11 +2,13 @@ import { h, Component } from "preact";
 import { Router } from "preact-router";
 
 import Header from "./Header";
+import { AuthProvider } from "../context/auth";
 
 // Code-splitting is automated for routes
 import Root from "routes/root";
 import Home from "routes/home";
 import Editor from "routes/editor";
+import Login from "routes/login";
 import Profile from "routes/profile";
 
 export default class App extends Component {
@@ -21,14 +23,17 @@ export default class App extends Component {
 	render() {
 		return (
 			<div id='app'>
-				<Header />
-				<Router onChange={this.handleRoute}>
-					<Root path='/' />
-					<Home path='/home' />
-					<Editor path='/editor' />
-					<Profile path='/profile/' user='me' />
-					<Profile path='/profile/:user' />
-				</Router>
+				<AuthProvider>
+					<Header />
+					<Router onChange={this.handleRoute}>
+						<Root path='/' />
+						<Home path='/home' />
+						<Editor path='/editor' />
+						<Login path='/login' />
+						<Profile path='/profile/' user='me' />
+						<Profile path='/profile/:user' />
+					</Router>
+				</AuthProvider>
 			</div>
 		);
 	}

@@ -1,4 +1,5 @@
 import { h } from "preact";
+import Button from "components/Button";
 import style from "./Hero.css";
 
 const Hero = () => (
@@ -20,7 +21,7 @@ const Hero = () => (
 				Some things are complex, but with the right approach and explaination,
 				anyone can learn anything!
 			</p>
-			<button class={style.hero_button}>More about us</button>
+			<Button style={{ marginBottom: "15px" }}>More about us</Button>
 			<p class={style.hero_link}>
 				Know much about something? <a href=''>start writing and monetize</a>
 			</p>

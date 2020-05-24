@@ -9,7 +9,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background: #fafafa;
-	font-family: "Helvetica Neue", arial, sans-serif;
+	font-family: "Nunito", arial, sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	color: #444;
@@ -28,6 +28,8 @@ body {
 
 h1 {
 	font-size: 2rem;
+	line-height: 2rem;
+	font-weight: 900;
 }
 
 h2 {
@@ -38,13 +40,14 @@ h2 {
 p {
 	color: rgb(69, 75, 95);
 	line-height: 1.45;
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 	margin: 0;
 }
 
 @media only screen and (min-width: 767px) {
 	h1 {
 		font-size: 3.5rem;
+		line-height: 3.5rem;
 	}
 
 	h2 {

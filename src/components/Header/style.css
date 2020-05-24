@@ -25,22 +25,37 @@
 	font-size: 100%;
 }
 
-.header nav a {
+.header_link {
 	display: inline-block;
 	height: 56px;
 	line-height: 56px;
-	padding: 0 15px;
 	min-width: 50px;
 	text-align: center;
 	background: rgba(255, 255, 255, 0);
 	text-decoration: none;
 	color: rgb(69, 75, 95);
-	will-change: background-color;
+}
+
+.header_link:hover {
+	color: rgb(11, 11, 12);
+}
+
+.header nav > * {
+	margin: 0 5px;
 }
 
 @media only screen and (min-width: 767px) {
 	.header_content {
-		max-width: 1300px;
+		max-width: 1560px;
 		margin: 0 auto;
+		padding: 0 100px;
+	}
+
+	.header_content h1 {
+		padding: 0;
+	}
+
+	.header nav > * {
+		margin: 0 10px;
 	}
 }

@@ -1,13 +1,3 @@
-.home {
-	display: block;
-	position: relative;
-	padding: 76px 20px;
-	min-height: 100%;
-	width: 100%;
-	max-width: 1560px;
-	margin: 0 auto;
-}
-
 .header {
 	text-align: center;
 	max-width: 590px;
@@ -81,10 +71,6 @@
 }
 
 @media only screen and (min-width: 767px) {
-	.home {
-		padding: 100px;
-	}
-
 	.header {
 		border-bottom: 1px solid #efefef;
 		padding-bottom: 20px;

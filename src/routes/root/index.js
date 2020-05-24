@@ -1,14 +1,14 @@
 import { h } from "preact";
-import style from "./style";
 
+import Layout from "components/Layout";
 import Hero from "./components/Hero.js";
 import Body from "./components/Body.js";
 
 const Root = () => (
-	<section class={style.root}>
+	<Layout>
 		<Hero />
 		<Body />
-	</section>
+	</Layout>
 );
 
 export default Root;
