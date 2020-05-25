@@ -11,7 +11,7 @@
 		"client"
 	],
 	"scripts": {
-		"build": "preact build",
+		"build": "scripts/create-env.js && preact build",
 		"serve": "sirv build --cors --single",
 		"dev": "preact watch",
 		"lint": "eslint src",
