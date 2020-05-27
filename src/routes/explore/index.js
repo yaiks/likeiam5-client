@@ -1,5 +1,5 @@
 import { h } from "preact";
-// import {  } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 import { Link } from "preact-router/match";
 import Layout from "components/Layout";
 // import { useAuth } from "context/auth";
