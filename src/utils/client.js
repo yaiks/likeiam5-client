@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "./storage";
+import { getStorageItem } from "./storage";
 
 const client = axios.create({
 	baseURL: process.env.API_URL,
@@ -7,7 +7,7 @@ const client = axios.create({
 
 client.interceptors.request.use(
 	function (config) {
-		const token = getToken();
+		const token = getStorageItem("token");
 		config.headers.Authorization = token ? `Bearer ${token}` : "";
 		return config;
 	},

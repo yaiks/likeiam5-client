@@ -19,11 +19,7 @@
 
 .divisor {
 	position: relative;
-	text-align: center;
 	margin: 15px 0;
-}
-
-.divisor {
 	text-align: center;
 	display: grid;
 	align-items: center;

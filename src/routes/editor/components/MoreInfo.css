@@ -1,0 +1,28 @@
+.editor_more_info {
+	text-align: center;
+}
+
+.editor_form_title {
+	margin-bottom: 30px;
+}
+
+.editor_form_input {
+	text-align: center;
+	font-size: 24px;
+	border: none;
+	border-radius: 4px;
+	padding: 20px;
+	width: 100%;
+	background: none;
+}
+
+@media only screen and (min-width: 767px) {
+	.editor_more_info {
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	.editor_form_title {
+		margin-bottom: 50px;
+	}
+}

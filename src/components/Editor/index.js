@@ -1,6 +1,7 @@
 import { h } from "preact";
 import { useEffect, useRef } from "preact/hooks";
 
+import Button from "components/Button";
 import style from "./style";
 
 let quill;
@@ -26,7 +27,7 @@ export const QuillEditor = ({ theme, placeholder }) => {
 	return <div class={style.editor_container} ref={element} />;
 };
 
-export const Toolbar = () => (
+export const Toolbar = ({ step, setStep, setContent, setPremium }) => (
 	<div id='toolbar' class={style.editor_toolbar}>
 		<div class={style.editor_configurations}>
 			<span class='ql-formats'>
@@ -83,10 +84,24 @@ export const Toolbar = () => (
 		</div>
 
 		<button
-			onClick={() => console.log("submit", quill.getContents())}
+			onClick={() => onPublish({ step, setStep, setContent, setPremium })}
 			class={style.publish_btn}
 		>
 			publish
 		</button>
 	</div>
 );
+
+const onPublish = ({ step, setStep, setContent, setPremium }) => {
+	if (step === "content") {
+		const content = quill.getContents();
+		setContent(content);
+		setStep("more_info");
+	}
+
+	if (step === "premium") {
+		const premium = quill.getContents();
+		setPremium(premium);
+		setStep("review");
+	}
+};

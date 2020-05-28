@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "preact/hooks";
 import { getUser } from "../services/user";
 import { loginEmailPassword } from "../services/auth";
 import {
-	getToken,
 	setStorageItem,
 	getTokenFromCallback,
 	removeToken,
