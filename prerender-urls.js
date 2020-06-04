@@ -1,4 +1,4 @@
-const { parsed } = require("dotenv-safe").config();
+require("dotenv-safe").config();
 
 const staticPages = [
 	{
@@ -20,8 +20,7 @@ const staticPages = [
 ];
 
 module.exports = async function () {
-	const url = parsed["API_URL"];
-	const response = await fetch(`${url}posts`);
+	const response = await fetch(`${process.env.API_URL}posts`);
 	const { posts } = await response.json();
 	const postsPages = posts.map((post) => ({
 		url: `/post/${post.id}`,
