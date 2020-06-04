@@ -1,20 +1,15 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
 import Button from "components/Button";
 import Divisor from "components/Divisor";
-import { createPost } from "services/post";
 import style from "./Review.css";
 
-const Review = ({ title, content, premium }) => {
+const Review = ({ title, content, premium, publishPost }) => {
 	return (
 		<div class={style.review}>
 			<div class={style.preview}>
 				<div class={style.preview_header}>
 					<h1>Review</h1>
-					<Button
-						variety='publish'
-						onClick={() => createPost({ title, content, premium })}
-					>
+					<Button variety='publish' onClick={() => publishPost()}>
 						publish
 					</Button>
 				</div>

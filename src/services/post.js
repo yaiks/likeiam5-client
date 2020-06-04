@@ -1,16 +1,56 @@
 import client from "utils/client";
 import { useAuth } from "context/auth";
 
-export const createPost = async ({ title, content, premium }) => {
+export const getAllPosts = async () => {
+	try {
+		const { data } = await client.get("/posts");
+		console.log("getAllPosts - data response", data);
+		return data;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
+export const getPostsByCategory = async (categoryId) => {
+	try {
+		const { data } = await client.get(`/posts/category/${categoryId}`);
+		return data;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
+export const getPostById = async (postId) => {
+	try {
+		const { data } = await client.get(`/post/${postId}`);
+		console.log("data from post", data);
+		return data;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
+export const createPost = async ({
+	title,
+	content,
+	category,
+	HTMLContent,
+	premium,
+	HTMLPremium,
+}) => {
 	try {
 		const { user } = useAuth();
-		console.log("createPost - user", user);
-		console.log("createPost - title", title);
-		console.log("createPost - content", content);
-		console.log("createPost - premium", premium);
-		// const { data } = await client.post("/post", { title, content, premium, user });
-		// console.log("createPost - data response", data);
-		// return data;
+		const { data } = await client.post("/post", {
+			title,
+			content,
+			category,
+			HTMLContent,
+			premium,
+			HTMLPremium,
+			user,
+		});
+		console.log("createPost - data response", data);
+		return data;
 	} catch (error) {
 		return Promise.reject(error);
 	}

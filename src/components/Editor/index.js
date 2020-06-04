@@ -1,7 +1,6 @@
 import { h } from "preact";
+import { route } from "preact-router";
 import { useEffect, useRef } from "preact/hooks";
-
-import Button from "components/Button";
 import style from "./style";
 
 let quill;
@@ -27,7 +26,13 @@ export const QuillEditor = ({ theme, placeholder }) => {
 	return <div class={style.editor_container} ref={element} />;
 };
 
-export const Toolbar = ({ step, setStep, setContent, setPremium }) => (
+export const Toolbar = ({
+	type,
+	setContent,
+	setHTMLContent,
+	setPremium,
+	setHTMLPremium,
+}) => (
 	<div id='toolbar' class={style.editor_toolbar}>
 		<div class={style.editor_configurations}>
 			<span class='ql-formats'>
@@ -84,7 +89,15 @@ export const Toolbar = ({ step, setStep, setContent, setPremium }) => (
 		</div>
 
 		<button
-			onClick={() => onPublish({ step, setStep, setContent, setPremium })}
+			onClick={() =>
+				onPublish({
+					type,
+					setContent,
+					setHTMLContent,
+					setPremium,
+					setHTMLPremium,
+				})
+			}
 			class={style.publish_btn}
 		>
 			publish
@@ -92,16 +105,26 @@ export const Toolbar = ({ step, setStep, setContent, setPremium }) => (
 	</div>
 );
 
-const onPublish = ({ step, setStep, setContent, setPremium }) => {
-	if (step === "content") {
+const onPublish = ({
+	type,
+	setContent,
+	setHTMLContent,
+	setPremium,
+	setHTMLPremium,
+}) => {
+	const html = quill.root.innerHTML.split(" ").join(" &nbsp;");
+
+	if (type === "content") {
 		const content = quill.getContents();
 		setContent(content);
-		setStep("more_info");
+		setHTMLContent(html);
+		route("editor/add-info");
 	}
 
-	if (step === "premium") {
+	if (type === "premium") {
 		const premium = quill.getContents();
 		setPremium(premium);
-		setStep("review");
+		setHTMLPremium(html);
+		route("editor/review");
 	}
 };

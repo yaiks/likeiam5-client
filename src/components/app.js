@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import { Router, route } from "preact-router";
+import { Provider } from "@preact/prerender-data-provider";
 
 import Header from "./Header";
 import { AuthProvider, useAuth } from "context/auth";
@@ -10,6 +11,7 @@ import Explore from "routes/explore";
 import Editor from "routes/editor";
 import Login from "routes/login";
 import Profile from "routes/profile";
+import Post from "routes/post";
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -26,20 +28,27 @@ export default class App extends Component {
 		this.currentUrl = e.url;
 	};
 
-	render() {
+	render(props) {
 		return (
 			<div id='app'>
-				<AuthProvider>
-					<Header />
-					<Router onChange={this.handleRoute}>
-						<Root path='/' />
-						<Explore path='/explore' />
-						<Editor path='/editor' />
-						<Login path='/login' />
-						<Profile path='/profile/' user='me' />
-						<Profile path='/profile/:user' />
-					</Router>
-				</AuthProvider>
+				<Provider value={props}>
+					<AuthProvider>
+						<Header />
+						<Router onChange={this.handleRoute}>
+							<Root path='/' />
+							<Explore path='/explore' />
+							<Editor path='/editor/' type='content' />
+							<Editor path='/editor/:type' />
+							<Editor path='/editor/add-info' />
+							<Editor path='/editor/review' />
+							<Editor path='/editor/published' />
+							<Login path='/login' />
+							<Post path='/post/:postId' />
+							<Profile path='/profile/' user='me' />
+							<Profile path='/profile/:user' />
+						</Router>
+					</AuthProvider>
+				</Provider>
 			</div>
 		);
 	}

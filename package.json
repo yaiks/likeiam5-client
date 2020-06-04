@@ -11,9 +11,9 @@
 		"client"
 	],
 	"scripts": {
-		"build": "scripts/create-env.js && preact build",
+		"build": "scripts/create-env.js && preact build --prerenderUrls ./prerender-urls.js",
 		"serve": "sirv build --cors --single",
-		"dev": "preact watch",
+		"dev": "preact watch --prerenderUrls ./prerender-urls.js",
 		"lint": "eslint src",
 		"test": "jest"
 	},
@@ -24,6 +24,7 @@
 		]
 	},
 	"devDependencies": {
+		"@preact/prerender-data-provider": "0.0.1",
 		"enzyme": "^3.10.0",
 		"enzyme-adapter-preact-pure": "^2.0.0",
 		"eslint": "^6.0.1",
