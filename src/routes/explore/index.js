@@ -1,19 +1,36 @@
-import { h } from "preact";
-import { useEffect } from "preact/hooks";
+import { h, render } from "preact";
+import { useState, useEffect } from "preact/hooks";
 import { Link } from "preact-router/match";
 import Layout from "components/Layout";
-// import { useAuth } from "context/auth";
+import { getAllPosts, getPostsByCategory } from "services/post";
+import { getAllCategories } from "services/category";
+import { getFormattedDate } from "utils/date";
 import style from "./style";
-import posts from "./mock";
 
 // filter as Dribbble alike
 // https://dribbble.com/search/shots/popular/animation?q=tags
 const Explore = () => {
+	const [posts, setPosts] = useState([]);
+	const [categories, setCategories] = useState([]);
+
+	useEffect(async () => {
+		const { posts } = await getAllPosts();
+		const { categories } = await getAllCategories();
+		setPosts(posts);
+		setCategories(categories);
+	}, []);
+
+	const getCategoryPosts = async (categoryId) => {
+		const { posts } = await getPostsByCategory(categoryId);
+		setPosts(posts);
+	};
+
+	console.log(posts);
+
 	return (
 		<Layout>
 			<header class={style.header}>
-				<h1>Start writing and sharing your knowledge</h1>
-				<Link href='/editor'>Write</Link>
+				<h1>Start exploring and learning</h1>
 			</header>
 			<div class={style.filter_container}>
 				<div class={style.category_filter}>
@@ -24,16 +41,11 @@ const Explore = () => {
 					<div class={style.category_labels}>
 						<ul>
 							<li>All</li>
-							<li>Biology</li>
-							<li>Design</li>
-							<li>English</li>
-							<li>Film</li>
-							<li>History</li>
-							<li>Lay</li>
-							<li>Mathmatics</li>
-							<li>Science</li>
-							<li>Web</li>
-							<li>Zoological</li>
+							{categories.map((category) => (
+								<li onClick={() => getCategoryPosts(category.id)}>
+									{category.name}
+								</li>
+							))}
 						</ul>
 					</div>
 					<form class={style.category_searchbar}>
@@ -44,16 +56,27 @@ const Explore = () => {
 			<div class={style.posts}>
 				{posts.map((post) => (
 					<article class={style.post}>
-						<div class={style.post_content}>
-							<h2>{post.title}</h2>
-							<div class={style.post_info}>
-								<p class={style.post_author}>by {post.author}</p>
-								<p class={style.category_label}>{post.category}</p>
+						<Link class={style.post_link} href={`/post/${post.id}`}>
+							<div class={style.post_content}>
+								<h2 class={style.post_title}>{post.title}</h2>
+								<div class={style.post_info}>
+									<p class={style.post_author}>
+										by <b>{post.user.email}</b>
+									</p>
+									<p class={style.category_label}>{post.category}</p>
+									<p class={style.post_date}>
+										{getFormattedDate(post.createdAt)}
+									</p>
+								</div>
+								<div
+									class={style.preview}
+									dangerouslySetInnerHTML={{
+										__html: post.html_content,
+									}}
+								/>
 							</div>
-							<p>{post.date}</p>
-							<p class={style.preview}>{post.preview}</p>
-						</div>
-						<Link href={post.slug}>Read more</Link>
+							<p class={style.post_read_more}>Read more</p>
+						</Link>
 					</article>
 				))}
 			</div>

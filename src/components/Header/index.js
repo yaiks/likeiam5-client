@@ -20,7 +20,10 @@ const Header = () => {
 					{user ? (
 						<Fragment>
 							<Link href='/profile/john' class={style.header_link}>
-								John
+								{user.username}
+							</Link>
+							<Link href='/editor' class={style.header_link}>
+								Write
 							</Link>
 							<Button
 								variety='secondary'

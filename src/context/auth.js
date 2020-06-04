@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "preact/hooks";
 import { getUser } from "../services/user";
 import { loginEmailPassword } from "../services/auth";
 import {
-	getToken,
 	setStorageItem,
 	getTokenFromCallback,
 	removeToken,
@@ -19,10 +18,7 @@ function AuthProvider(props) {
 	});
 
 	useEffect(() => {
-		const path = window.location.pathname;
-		if (path.includes("/explore")) {
-			getTokenFromCallback();
-		}
+		getTokenFromCallback();
 
 		getUser().then(
 			(user) => setState({ status: "success", error: null, user }),
@@ -34,7 +30,7 @@ function AuthProvider(props) {
 		const token = await loginEmailPassword({ email, password });
 
 		setStorageItem("token", token);
-		window.location = "/explore";
+		window.location = "/";
 	};
 
 	const logout = () => {

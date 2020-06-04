@@ -49,6 +49,10 @@
 	/* overflow-y: hidden; */
 }
 
+.post_link {
+	text-decoration: none;
+}
+
 .post_content {
 	mask-image: -webkit-gradient(
 		linear,
@@ -61,13 +65,29 @@
 	max-height: 300px;
 }
 
+.post_title {
+	color: #333;
+}
+
 .post_info {
 	display: flex;
+	align-items: baseline;
 	margin-bottom: 15px;
 }
 
 .post_author {
 	margin-right: 15px;
+}
+
+.post_date {
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.post_read_more {
+	margin: 10px 0;
+	font-size: 16px;
+	color: #333;
 }
 
 @media only screen and (min-width: 767px) {

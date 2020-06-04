@@ -1,6 +1,6 @@
 import { h } from "preact";
+import { route } from "preact-router";
 import { useEffect, useRef } from "preact/hooks";
-
 import style from "./style";
 
 let quill;
@@ -26,7 +26,13 @@ export const QuillEditor = ({ theme, placeholder }) => {
 	return <div class={style.editor_container} ref={element} />;
 };
 
-export const Toolbar = () => (
+export const Toolbar = ({
+	type,
+	setContent,
+	setHTMLContent,
+	setPremium,
+	setHTMLPremium,
+}) => (
 	<div id='toolbar' class={style.editor_toolbar}>
 		<div class={style.editor_configurations}>
 			<span class='ql-formats'>
@@ -83,10 +89,42 @@ export const Toolbar = () => (
 		</div>
 
 		<button
-			onClick={() => console.log("submit", quill.getContents())}
+			onClick={() =>
+				onPublish({
+					type,
+					setContent,
+					setHTMLContent,
+					setPremium,
+					setHTMLPremium,
+				})
+			}
 			class={style.publish_btn}
 		>
 			publish
 		</button>
 	</div>
 );
+
+const onPublish = ({
+	type,
+	setContent,
+	setHTMLContent,
+	setPremium,
+	setHTMLPremium,
+}) => {
+	const html = quill.root.innerHTML.split(" ").join(" &nbsp;");
+
+	if (type === "content") {
+		const content = quill.getContents();
+		setContent(content);
+		setHTMLContent(html);
+		route("editor/add-info");
+	}
+
+	if (type === "premium") {
+		const premium = quill.getContents();
+		setPremium(premium);
+		setHTMLPremium(html);
+		route("editor/review");
+	}
+};

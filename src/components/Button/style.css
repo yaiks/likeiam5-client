@@ -16,3 +16,12 @@ button {
 	background-color: royalblue;
 	color: #fff;
 }
+
+.publish {
+	background: slateblue;
+	height: auto;
+	width: auto;
+	color: #fff;
+	font-size: 16px;
+	padding: 6px 36px;
+}

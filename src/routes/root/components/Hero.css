@@ -25,10 +25,12 @@
 
 	.hero_picture {
 		order: 2;
+		flex: 1;
 	}
 
 	.hero_image {
 		max-width: 780px;
+		min-width: 540px;
 	}
 
 	.hero_content {

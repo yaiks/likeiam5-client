@@ -3,9 +3,13 @@ const retrieveTokenFromURL = () => {
 	return URLParams.get("token");
 };
 
-export const getToken = () => {
-	let token = localStorage.getItem("token");
-	return token;
+export const getStorageItem = (key) => {
+	const item = localStorage.getItem(key);
+	return item;
+};
+
+export const setStorageItem = (key, value) => {
+	localStorage.setItem(key, value);
 };
 
 export const getTokenFromCallback = () => {
@@ -17,8 +21,4 @@ export const getTokenFromCallback = () => {
 
 export const removeToken = () => {
 	localStorage.removeItem("token");
-};
-
-export const setStorageItem = (key, value) => {
-	localStorage.setItem(key, value);
 };

@@ -1,6 +1,7 @@
 import { h } from "preact";
 import { Link } from "preact-router/match";
 import Layout from "components/Layout";
+import Divisor from "components/Divisor";
 import LoginForm from "./components/LoginForm";
 import { useAuth } from "context/auth";
 import style from "./style";
@@ -17,7 +18,7 @@ const Login = () => {
 							signin({ email, password })
 						}
 					/>
-					<p class={style.divisor}>or</p>
+					<Divisor text='or' />
 					<a
 						class={style.google_login}
 						href={`${process.env.API_URL}login/google`}
