@@ -1,5 +1,5 @@
 .body {
-	padding: 30px 0;
+	padding: 30px 0 0;
 }
 
 .body > .posts > h2 {
@@ -10,7 +10,7 @@
 }
 
 .posts {
-	margin: 0 20px;
+	margin: 0 20px 50px;
 }
 
 .categoryFilter {
@@ -48,20 +48,96 @@
 	color: #333;
 }
 
-.monetization_info {
-	background-color: #efefef;
-	padding: 30px 40px;
+.premium_container {
+	width: 100%;
+	background-color: #04151f;
+	padding: 10px 0 40px;
 }
 
-.monetization_info > h2 {
-	margin: 0 0 10px;
+.premium_content {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	margin: 0 20px;
+	padding: 30px 0;
+	color: #fff;
+}
+
+.premium_header {
+	max-width: 560px;
+}
+
+.premium_header > h2 {
+	font-size: 2rem;
+	line-height: 2rem;
+	font-weight: 900;
+	margin: 0 0 30px;
+}
+
+.premium_header > p {
+	color: #fff;
 }
 
 .monetization_steps {
-	margin: 30px 0;
+	margin: 30px 0 0;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
+	align-items: baseline;
+}
+
+.benefit {
+	display: flex;
 	align-items: center;
+	margin-bottom: 25px;
+}
+
+.benefit > .check {
+	width: 30px;
+	height: 30px;
+}
+
+.benefit > span {
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.actions {
+	margin: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.overall_data {
+	padding: 30px 0;
+	margin: 0 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.data_item {
+	display: flex;
+	align-items: center;
+}
+
+.data_item > img {
+	width: 30px;
+	height: 30px;
+	margin-right: 15px;
+}
+
+.data_item > h3 {
+	margin: 10px 0;
+	font-weight: 400;
+	font-size: 1.25rem;
+}
+
+.data_item > h3 > span {
+	font-size: 2rem;
+	font-weight: 900;
 }
 
 @media only screen and (min-width: 767px) {
@@ -75,6 +151,47 @@
 	}
 
 	.posts {
-		margin: 0 240px;
+		margin: 30px 240px 60px;
+	}
+
+	.premium_container {
+		padding: 140px 0;
+	}
+
+	.premium_content {
+		margin: 0 240px 0;
+	}
+
+	.premium_header > h2 {
+		font-size: 3.5rem;
+		line-height: 3.5rem;
+	}
+
+	.actions {
+		margin: 20px 240px;
+	}
+
+	.overall_data {
+		padding: 60px 0;
+		margin: 0 240px 0;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.data_item > img {
+		width: 35px;
+		height: 35px;
+	}
+
+	.data_item > h3 {
+		font-size: 1.75rem;
+	}
+
+	.data_item > h3:first-of-type {
+		margin-right: 60px;
+	}
+
+	.data_item > h3 > span {
+		font-size: 3rem;
 	}
 }

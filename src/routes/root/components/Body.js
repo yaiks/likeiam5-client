@@ -30,9 +30,16 @@ const posts = [
 	},
 ];
 
+const benefits = [
+	{ text: "Access to premium content" },
+	{ text: "Directly support content creators" },
+	{ text: "Easy to setup" },
+	{ text: "Unobtrusive and secure" },
+];
+
 const Body = () => (
 	<main class={style.body}>
-		<article class={style.posts}>
+		<section class={style.posts}>
 			<h2>Learn something new today</h2>
 			<div class={style.categoryFilter}>
 				{categories.map((category) => (
@@ -54,22 +61,47 @@ const Body = () => (
 				</div>
 			))}
 
-			<Button style={{ marginBottom: "15px" }}>More categories</Button>
-		</article>
+			<Button>More categories</Button>
+		</section>
 
-		<div class={style.monetization_info}>
-			<h2>Get extra content with premium access</h2>
-			<p>
-				Are you curious and have appetite for more information? Get instant
-				access to special content made by creators, to help further explain hard
-				and complex concepts
-			</p>
-			<div class={style.monetization_steps}>
-				<div>step 1</div>
-				<div>step 2</div>
-				<div>step 3</div>
+		<section class={style.premium_container}>
+			<div class={style.premium_content}>
+				<div class={style.premium_header}>
+					<h2>Get extra content with premium access</h2>
+					<p>
+						Are you curious and have appetite for more information? Get instant
+						access to special content made by creators, to help further explain
+						hard and complex concepts
+					</p>
+				</div>
+				<div class={style.monetization_steps}>
+					{benefits.map((benefit) => (
+						<div class={style.benefit}>
+							<img class={style.check} src={`assets/icons/check.svg`} />
+							<span>{benefit.text}</span>
+						</div>
+					))}
+				</div>
 			</div>
-		</div>
+			<div class={style.actions}>
+				<Button>Get premium</Button>
+			</div>
+		</section>
+
+		<section class={style.overall_data}>
+			<div class={style.data_item}>
+				<img src={`assets/icons/paper.svg`} />
+				<h3>
+					<span>30</span> amazing articles written
+				</h3>
+			</div>
+			<div class={style.data_item}>
+				<img src={`assets/icons/drawer.svg`} />
+				<h3>
+					<span>5</span> total categories created
+				</h3>
+			</div>
+		</section>
 	</main>
 );
 
