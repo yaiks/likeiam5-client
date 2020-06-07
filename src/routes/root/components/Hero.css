@@ -1,7 +1,13 @@
 .hero {
 	width: 100%;
+	background-color: #ffe8d1ff;
+	padding: 86px 0 50px;
+}
+
+.container {
 	display: flex;
 	flex-flow: row wrap;
+	margin: 0 20px;
 }
 
 .hero_image {
@@ -12,6 +18,7 @@
 
 .hero_subtitle {
 	margin-bottom: 30px;
+	max-width: 410px;
 }
 
 .hero_link {
@@ -20,12 +27,16 @@
 
 @media only screen and (min-width: 767px) {
 	.hero {
+		padding: 100px 0;
+	}
+
+	.container {
 		justify-content: space-between;
+		margin: 0 240px;
 	}
 
 	.hero_picture {
 		order: 2;
-		flex: 1;
 	}
 
 	.hero_image {

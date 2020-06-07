@@ -2,13 +2,24 @@
 @import "~quill/dist/quill.bubble.css";
 @import "~quill/dist/quill.snow.css";
 
+/* $deep-jungle-green: #156064ff;
+$caribbean-green: #00c49aff;
+$yellow-crayola: #f8e16cff;
+$melon: #ffc2b4ff;
+$light-salmon: #fb8f67ff; */
+
+/* $white: #ffffffff;
+$bisque: #ffe8d1ff;
+$blue-munsell: #568ea3ff;
+$middle-blue: #68c3d4ff;
+$coyote-brown: #826251ff; */
+
 html,
 body {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: #fafafa;
 	font-family: "Nunito", arial, sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -34,11 +45,12 @@ h1 {
 
 h2 {
 	font-size: 1.5rem;
+	line-height: 1.5rem;
 	margin-bottom: 10px;
 }
 
 p {
-	color: rgb(69, 75, 95);
+	color: rgba(69, 75, 95);
 	line-height: 1.45;
 	font-size: 1.25rem;
 	margin: 0;
@@ -52,5 +64,6 @@ p {
 
 	h2 {
 		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 }

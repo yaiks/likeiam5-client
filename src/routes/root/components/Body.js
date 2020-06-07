@@ -1,5 +1,14 @@
 import { h } from "preact";
+import Button from "components/Button";
 import style from "./Body.css";
+
+const categories = [
+	{ name: "Databases" },
+	{ name: "Health" },
+	{ name: "Law" },
+	{ name: "Politics" },
+	{ name: "Web" },
+];
 
 const posts = [
 	{
@@ -24,7 +33,18 @@ const posts = [
 const Body = () => (
 	<main class={style.body}>
 		<article class={style.posts}>
-			<h2># Latest</h2>
+			<h2>Learn something new today</h2>
+			<div class={style.categoryFilter}>
+				{categories.map((category) => (
+					<a class={style.filter}>
+						<img
+							class={style.filterImg}
+							src={`assets/icons/${category.name.toLowerCase()}.svg`}
+						/>
+						<p>{category.name}</p>
+					</a>
+				))}
+			</div>
 			{posts.map((post) => (
 				<div class={style.post}>
 					<a href={post.url}>
@@ -33,6 +53,8 @@ const Body = () => (
 					</a>
 				</div>
 			))}
+
+			<Button style={{ marginBottom: "15px" }}>More categories</Button>
 		</article>
 
 		<div class={style.monetization_info}>
