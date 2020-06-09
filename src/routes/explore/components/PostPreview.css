@@ -1,0 +1,44 @@
+.post {
+	/* overflow-y: hidden; */
+}
+
+.post_link {
+	text-decoration: none;
+}
+
+.post_content {
+	mask-image: -webkit-gradient(
+		linear,
+		left 50%,
+		left bottom,
+		from(rgba(0, 0, 0, 1)),
+		to(rgba(0, 0, 0, 0))
+	);
+	overflow-y: hidden;
+	max-height: 300px;
+}
+
+.post_title {
+	color: #333;
+}
+
+.post_info {
+	display: flex;
+	align-items: baseline;
+	margin-bottom: 15px;
+}
+
+.post_author {
+	margin-right: 15px;
+}
+
+.post_date {
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.post_read_more {
+	margin: 10px 0;
+	font-size: 16px;
+	color: #333;
+}
