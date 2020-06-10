@@ -11,7 +11,7 @@ import style from "./style";
 const Editor = ({ path, type }) => {
 	console.log(path, type);
 	const [content, setContent] = useState([]);
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState({});
 	const [HTMLContent, setHTMLContent] = useState("");
 	const [premium, setPremium] = useState([]);
 	const [HTMLPremium, setHTMLPremium] = useState("");
@@ -23,9 +23,9 @@ const Editor = ({ path, type }) => {
 			title,
 			content,
 			category,
-			HTMLContent,
+			html_content: HTMLContent,
 			premium,
-			HTMLPremium,
+			html_premium: HTMLPremium,
 		});
 		setCreatedPost(newPost);
 		route("/editor/published");

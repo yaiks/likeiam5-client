@@ -4,7 +4,9 @@ import style from "./CategoryLabels.css";
 
 const CategoryLabels = ({ categories, getCategoryPosts }) => (
 	<ul class={style.category_labels}>
-		<li class={style.category}>All</li>
+		<li class={style.category} onClick={() => getCategoryPosts()}>
+			All
+		</li>
 		{categories.map((category) => (
 			<li class={style.category} onClick={() => getCategoryPosts(category.id)}>
 				{category.name}

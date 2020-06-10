@@ -25,7 +25,7 @@ const mock = [
 const Explore = () => {
 	const [posts, setPosts] = useState([]);
 	const [categories, setCategories] = useState(mock);
-	const [drowpdownValue, setDropdownValue] = useState("all");
+	const [drowpdownValue, setDropdownValue] = useState("All");
 
 	useEffect(async () => {
 		const { posts } = await getAllPosts();
@@ -35,19 +35,24 @@ const Explore = () => {
 	}, []);
 
 	useEffect(async () => {
-		console.log("make request to get posts with filter", drowpdownValue);
+		const { posts } = await getAllPosts({ order: drowpdownValue });
+		setPosts(posts);
 	}, [drowpdownValue]);
 
 	const getCategoryPosts = async (categoryId) => {
-		const { posts } = await getPostsByCategory(categoryId);
+		if (categoryId) {
+			const { posts } = await getPostsByCategory(categoryId);
+			setPosts(posts);
+		} else {
+			const { posts } = await getAllPosts();
+			setPosts(posts);
+		}
+	};
+
+	const onSubmit = async (value) => {
+		const { posts } = await getAllPosts({ title: value });
 		setPosts(posts);
 	};
-
-	const onSubmit = (value) => {
-		console.log("search for ", value);
-	};
-
-	console.log(posts);
 
 	return (
 		<Layout>
@@ -56,7 +61,7 @@ const Explore = () => {
 			</header>
 			<div class={style.filter_container}>
 				<div class={style.category_filter}>
-					<Dropdown value={drowpdownValue} onChange={setDropdownValue} />
+					<Dropdown initialValue={drowpdownValue} onChange={setDropdownValue} />
 					<div class={style.category_labels}>
 						<CategoryLabels
 							categories={categories}

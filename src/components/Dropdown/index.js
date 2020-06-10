@@ -3,7 +3,7 @@ import { useState } from "preact/hooks";
 import { capitalizeFirstLetter } from "utils/helpers";
 import style from "./style";
 
-const Dropdown = ({ value, onChange }) => {
+const Dropdown = ({ initialValue, onChange }) => {
 	const [open, setOpen] = useState(false);
 
 	const handleClick = (e) => {
@@ -18,7 +18,7 @@ const Dropdown = ({ value, onChange }) => {
 	return (
 		<div class={style.dropdown} id='category_type'>
 			<button class={style.dropdown_button} onClick={handleClick}>
-				{capitalizeFirstLetter(value)}
+				{capitalizeFirstLetter(initialValue)}
 			</button>
 			<div class={open ? style.open : style.dropdown_content}>
 				<ul class={style.dropdown_list}>

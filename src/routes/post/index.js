@@ -14,8 +14,6 @@ const Post = ({ postId }) => {
 		}
 	}, []);
 
-	console.log("post", post);
-
 	return (
 		<Layout>
 			<header class={style.header}>
@@ -24,6 +22,11 @@ const Post = ({ postId }) => {
 			<div
 				dangerouslySetInnerHTML={{
 					__html: post.html_content,
+				}}
+			></div>
+			<div
+				dangerouslySetInnerHTML={{
+					__html: post.html_premium,
 				}}
 			></div>
 		</Layout>

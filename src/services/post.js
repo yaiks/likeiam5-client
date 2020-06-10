@@ -1,10 +1,9 @@
 import client from "utils/client";
 import { useAuth } from "context/auth";
 
-export const getAllPosts = async () => {
+export const getAllPosts = async ({ order = "", title = "" } = {}) => {
 	try {
-		const { data } = await client.get("/posts");
-		console.log("getAllPosts - data response", data);
+		const { data } = await client.get(`/posts?order=${order}&title=${title}`);
 		return data;
 	} catch (error) {
 		return Promise.reject(error);
@@ -23,7 +22,6 @@ export const getPostsByCategory = async (categoryId) => {
 export const getPostById = async (postId) => {
 	try {
 		const { data } = await client.get(`/post/${postId}`);
-		console.log("data from post", data);
 		return data;
 	} catch (error) {
 		return Promise.reject(error);
@@ -34,9 +32,9 @@ export const createPost = async ({
 	title,
 	content,
 	category,
-	HTMLContent,
+	html_content,
 	premium,
-	HTMLPremium,
+	html_premium,
 }) => {
 	try {
 		const { user } = useAuth();
@@ -44,12 +42,12 @@ export const createPost = async ({
 			title,
 			content,
 			category,
-			HTMLContent,
+			html_content,
 			premium,
-			HTMLPremium,
+			html_premium,
 			user,
 		});
-		console.log("createPost - data response", data);
+
 		return data;
 	} catch (error) {
 		return Promise.reject(error);
