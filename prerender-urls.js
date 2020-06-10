@@ -17,15 +17,20 @@ const staticPages = [
 		url: "/login",
 		title: "Write something amazing today",
 	},
+	{
+		url: "/post/*",
+		title: "Write something amazing today",
+	},
 ];
 
-module.exports = async function () {
-	const response = await fetch(`${process.env.API_URL}posts`);
-	const { posts } = await response.json();
-	const postsPages = posts.map((post) => ({
-		url: `/post/${post.id}`,
-		title: post.title,
-	}));
+module.exports = function () {
+	return staticPages;
+	// const response = await fetch(`${process.env.API_URL}posts`);
+	// const { posts } = await response.json();
+	// const postsPages = posts.map((post) => ({
+	// 	url: `/post/${post.id}`,
+	// 	title: post.title,
+	// }));
 
-	return [...staticPages, ...postsPages];
+	// return [...staticPages, ...postsPages];
 };

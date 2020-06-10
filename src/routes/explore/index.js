@@ -4,14 +4,28 @@ import { Link } from "preact-router/match";
 import Layout from "components/Layout";
 import { getAllPosts, getPostsByCategory } from "services/post";
 import { getAllCategories } from "services/category";
-import { getFormattedDate } from "utils/date";
+import PostPreview from "./components/PostPreview";
+import Dropdown from "components/Dropdown";
+import Searchbar from "components/Searchbar";
+import CategoryLabels from "./components/CategoryLabels";
 import style from "./style";
+
+const mock = [
+	{ id: 1, name: "web" },
+	{ id: 2, name: "biology" },
+	{ id: 3, name: "history" },
+	{ id: 4, name: "math" },
+	{ id: 5, name: "technology" },
+	{ id: 5, name: "technology" },
+	{ id: 5, name: "technology" },
+];
 
 // filter as Dribbble alike
 // https://dribbble.com/search/shots/popular/animation?q=tags
 const Explore = () => {
 	const [posts, setPosts] = useState([]);
-	const [categories, setCategories] = useState([]);
+	const [categories, setCategories] = useState(mock);
+	const [drowpdownValue, setDropdownValue] = useState("All");
 
 	useEffect(async () => {
 		const { posts } = await getAllPosts();
@@ -20,12 +34,25 @@ const Explore = () => {
 		setCategories(categories);
 	}, []);
 
-	const getCategoryPosts = async (categoryId) => {
-		const { posts } = await getPostsByCategory(categoryId);
+	useEffect(async () => {
+		const { posts } = await getAllPosts({ order: drowpdownValue });
 		setPosts(posts);
+	}, [drowpdownValue]);
+
+	const getCategoryPosts = async (categoryId) => {
+		if (categoryId) {
+			const { posts } = await getPostsByCategory(categoryId);
+			setPosts(posts);
+		} else {
+			const { posts } = await getAllPosts();
+			setPosts(posts);
+		}
 	};
 
-	console.log(posts);
+	const onSubmit = async (value) => {
+		const { posts } = await getAllPosts({ title: value });
+		setPosts(posts);
+	};
 
 	return (
 		<Layout>
@@ -34,50 +61,21 @@ const Explore = () => {
 			</header>
 			<div class={style.filter_container}>
 				<div class={style.category_filter}>
-					<select class={style.category_type} id='category_type'>
-						<option value='popular'>Popular</option>
-						<option value='latest'>Latest</option>
-					</select>
+					<Dropdown initialValue={drowpdownValue} onChange={setDropdownValue} />
 					<div class={style.category_labels}>
-						<ul>
-							<li>All</li>
-							{categories.map((category) => (
-								<li onClick={() => getCategoryPosts(category.id)}>
-									{category.name}
-								</li>
-							))}
-						</ul>
+						<CategoryLabels
+							categories={categories}
+							getCategoryPosts={getCategoryPosts}
+						/>
 					</div>
-					<form class={style.category_searchbar}>
-						<input type='text' />
-					</form>
+					<div class={style.category_searchbar}>
+						<Searchbar onSubmit={onSubmit} />
+					</div>
 				</div>
 			</div>
 			<div class={style.posts}>
 				{posts.map((post) => (
-					<article class={style.post}>
-						<Link class={style.post_link} href={`/post/${post.id}`}>
-							<div class={style.post_content}>
-								<h2 class={style.post_title}>{post.title}</h2>
-								<div class={style.post_info}>
-									<p class={style.post_author}>
-										by <b>{post.user.email}</b>
-									</p>
-									<p class={style.category_label}>{post.category}</p>
-									<p class={style.post_date}>
-										{getFormattedDate(post.createdAt)}
-									</p>
-								</div>
-								<div
-									class={style.preview}
-									dangerouslySetInnerHTML={{
-										__html: post.html_content,
-									}}
-								/>
-							</div>
-							<p class={style.post_read_more}>Read more</p>
-						</Link>
-					</article>
+					<PostPreview post={post} />
 				))}
 			</div>
 		</Layout>
