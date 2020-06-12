@@ -17,6 +17,36 @@
 	background: none;
 }
 
+.errror_input {
+	border: 1px solid red !important;
+}
+
+.category_selection {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.category_selection > span {
+	margin: 0 20px;
+}
+
+.create_category_input {
+	max-width: 150px;
+	padding: 8px;
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+
+.error_message {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 20px;
+	color: red;
+}
+
 @media only screen and (min-width: 767px) {
 	.editor_more_info {
 		max-width: 500px;

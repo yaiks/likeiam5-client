@@ -19,3 +19,12 @@
 .input:last-of-type {
 	margin-bottom: 30px;
 }
+
+.errror_input {
+	border: 1px solid red !important;
+}
+
+.error_message {
+	margin-bottom: 20px;
+	color: red;
+}

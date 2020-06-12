@@ -9,3 +9,12 @@ export const getAllCategories = async () => {
 		return Promise.reject(error);
 	}
 };
+
+export const createCategory = async (name) => {
+	try {
+		const { data } = await client.post("/category", { name });
+		return data;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};

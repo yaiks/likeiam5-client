@@ -22,7 +22,7 @@ export const QuillEditor = ({ theme, placeholder }) => {
 			});
 		}
 
-		return () => console.log("unmount") || (quill = "");
+		return () => (quill = "");
 	}, []);
 
 	return <div class={style.editor_container} ref={element} />;

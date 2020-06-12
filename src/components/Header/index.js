@@ -5,7 +5,7 @@ import Button from "components/Button";
 import style from "./style.css";
 
 const Header = () => {
-	const { user } = useAuth();
+	const { user, logout } = useAuth();
 	console.log("header user", user);
 	return (
 		<header class={style.header}>
@@ -25,10 +25,7 @@ const Header = () => {
 							<Link href='/editor' class={style.header_link}>
 								Write
 							</Link>
-							<Button
-								variety='secondary'
-								onClick={() => console.log("logout!")}
-							>
+							<Button variety='secondary' onClick={() => logout()}>
 								logout
 							</Button>
 						</Fragment>
