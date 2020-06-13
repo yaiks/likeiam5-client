@@ -18,6 +18,10 @@ const staticPages = [
 		title: "Write something amazing today",
 	},
 	{
+		url: "/about",
+		title: "Write something amazing today",
+	},
+	{
 		url: "/post/*",
 		title: "Write something amazing today",
 	},

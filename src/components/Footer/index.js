@@ -6,10 +6,10 @@ const Footer = () => (
 	<footer class={style.footer}>
 		<div class={style.footer_content}>
 			<div class={style.footer_column}>
-				<Link href='/about'>Get premium</Link>
-				<Link href='/explore'>Explore</Link>
-				<Link href='/'>All categories</Link>
-				<Link href='/login'>Login</Link>
+				<Link href='/about'>get premium</Link>
+				<Link href='/explore'>explore</Link>
+				<Link href='/'>all categories</Link>
+				<Link href='/login'>login</Link>
 			</div>
 			<div class={style.footer_column}>
 				<p class={style.author}>Copyright 2020</p>

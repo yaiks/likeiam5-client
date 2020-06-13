@@ -12,7 +12,7 @@ const Login = () => {
 		<Layout>
 			<div class={style.login_container}>
 				<div class={style.login_box}>
-					<h1 class={style.login_title}>Login to LikeIam5</h1>
+					<h1 class={style.login_title}>Login 👋</h1>
 					<LoginForm
 						loginEmailPassword={({ email, password }) =>
 							signin({ email, password })

@@ -1,6 +1,7 @@
 import { h } from "preact";
 import Button from "components/Button";
 import style from "./Body.css";
+import { route } from "preact-router";
 
 const categories = [
 	{ name: "Databases" },
@@ -84,7 +85,7 @@ const Body = () => (
 				</div>
 			</div>
 			<div class={style.actions}>
-				<Button>Get premium</Button>
+				<Button onClick={() => route("/about")}>Get premium</Button>
 			</div>
 		</section>
 

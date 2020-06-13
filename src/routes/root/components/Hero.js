@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { route, Link } from "preact-router";
 import Button from "components/Button";
 import style from "./Hero.css";
 
@@ -26,9 +27,15 @@ const Hero = () => (
 					Some things are complex, but with the right approach and explaination,
 					anyone can learn anything!
 				</p>
-				<Button style={{ marginBottom: "15px" }}>Start exploring</Button>
+				<Button
+					onClick={() => route("/explore")}
+					style={{ marginBottom: "15px" }}
+				>
+					Start exploring
+				</Button>
 				<p class={style.hero_link}>
-					Know much about something? <a href=''>start writing and monetize</a>
+					Know much about something?{" "}
+					<Link href='/login'>start writing and monetize</Link>
 				</p>
 			</div>
 		</Container>

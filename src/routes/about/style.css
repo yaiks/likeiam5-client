@@ -1,0 +1,36 @@
+.user_steps {
+	margin: 30px 0;
+}
+
+.step {
+	display: flex;
+	align-items: center;
+	margin-bottom: 25px;
+}
+
+.step_number {
+	flex: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 800;
+}
+
+.step_text {
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+@media only screen and (min-width: 767px) {
+	.step_text {
+		font-size: 1.5rem;
+		margin-left: 20px;
+	}
+}
