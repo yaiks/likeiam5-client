@@ -10,6 +10,7 @@ import Root from "routes/root";
 import Explore from "routes/explore";
 import Editor from "routes/editor";
 import Login from "routes/login";
+import Signup from "routes/signup";
 import Profile from "routes/profile";
 import Post from "routes/post";
 import About from "routes/about";
@@ -44,6 +45,7 @@ export default class App extends Component {
 							<Editor path='/editor/review' />
 							<Editor path='/editor/published' />
 							<Login path='/login' />
+							<Signup path='/signup' />
 							<Post path='/post/:postId' />
 							<Profile path='/profile' />
 							<About path='/about' />

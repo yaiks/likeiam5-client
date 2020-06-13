@@ -1,7 +1,8 @@
-import { h, render } from "preact";
+import { h } from "preact";
 import { route } from "preact-router";
 import Divisor from "components/Divisor";
 import Button from "components/Button";
+import BlockedContent from "components/BlockedContent";
 import style from "./DynamicContent.css";
 
 const PremiumContent = ({ html_premium }) => (
@@ -14,17 +15,6 @@ const PremiumContent = ({ html_premium }) => (
 
 const LoadingContent = () => <div>Loading...</div>;
 
-const CallToAction = () => (
-	<div class={style.not_premium}>
-		<h2>This article has a premium content. Want to see more?</h2>
-		<Button onClick={() => route("/about")}>See more</Button>
-		<img
-			src='/assets/images/not_premium.svg'
-			alt='this content is for premium users only'
-		/>
-	</div>
-);
-
 const DynamicContent = ({ html_premium, userMonetizationStatus }) => {
 	const component = () => {
 		switch (userMonetizationStatus) {
@@ -33,9 +23,17 @@ const DynamicContent = ({ html_premium, userMonetizationStatus }) => {
 			case "pending":
 				return <LoadingContent />;
 			case "stop":
-				return <CallToAction />;
+				return (
+					<BlockedContent text='This article has a premium content. Want to see more?'>
+						<Button onClick={() => route("/about")}>See more</Button>
+					</BlockedContent>
+				);
 			default:
-				return <CallToAction />;
+				return (
+					<BlockedContent text='This article has a premium content. Want to see more?'>
+						<Button onClick={() => route("/about")}>See more</Button>
+					</BlockedContent>
+				);
 		}
 	};
 

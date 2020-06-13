@@ -1,31 +1,22 @@
-import { h, render } from "preact";
-import { useState, useEffect } from "preact/hooks";
-import { Link } from "preact-router/match";
+import { h } from "preact";
+import { route } from "preact-router";
+import { useState, useEffect, useRef } from "preact/hooks";
 import Layout from "components/Layout";
 import { getAllPosts, getPostsByCategory } from "services/post";
 import { getAllCategories } from "services/category";
 import PostPreview from "./components/PostPreview";
+import BlockedContent from "components/BlockedContent";
+import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import Searchbar from "components/Searchbar";
 import CategoryLabels from "./components/CategoryLabels";
 import style from "./style";
 
-const mock = [
-	{ id: 1, name: "web" },
-	{ id: 2, name: "biology" },
-	{ id: 3, name: "history" },
-	{ id: 4, name: "math" },
-	{ id: 5, name: "technology" },
-	{ id: 5, name: "technology" },
-	{ id: 5, name: "technology" },
-];
-
-// filter as Dribbble alike
-// https://dribbble.com/search/shots/popular/animation?q=tags
 const Explore = () => {
 	const [posts, setPosts] = useState([]);
-	const [categories, setCategories] = useState(mock);
+	const [categories, setCategories] = useState([]);
 	const [drowpdownValue, setDropdownValue] = useState("All");
+	const mountedRef = useRef(true);
 
 	useEffect(async () => {
 		const { posts } = await getAllPosts();
@@ -73,11 +64,17 @@ const Explore = () => {
 					</div>
 				</div>
 			</div>
-			<div class={style.posts}>
-				{posts.map((post) => (
-					<PostPreview post={post} />
-				))}
-			</div>
+			{posts.length ? (
+				<div class={style.posts}>
+					{posts.map((post) => (
+						<PostPreview post={post} />
+					))}
+				</div>
+			) : (
+				<BlockedContent text='There are no posts yet'>
+					<Button onClick={() => route("/editor")}>Create post</Button>
+				</BlockedContent>
+			)}
 		</Layout>
 	);
 };

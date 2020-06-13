@@ -34,8 +34,6 @@ const Post = ({ postId }) => {
 		(monetizationStatus[status] || monetizationStatus["default"])();
 	}, [status]);
 
-	console.log("userMonetizationStatus", userMonetizationStatus);
-
 	return (
 		<Layout>
 			{post && post.user && post.user.monetization_endpoint && (

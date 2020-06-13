@@ -1,12 +1,13 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import Button from "components/Button";
-import style from "./LoginForm.css";
+import style from "./style";
 
-const LoginForm = ({ loginEmailPassword }) => {
-	const [email, setEmail] = useState(null);
-	const [password, setPassword] = useState(null);
+const LoginForm = ({ register, buttonText }) => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState({});
+	const [registerError, setRegisterError] = useState("");
 
 	const validate = () => {
 		let errors = {};
@@ -24,19 +25,22 @@ const LoginForm = ({ loginEmailPassword }) => {
 		return errors;
 	};
 
-	const submitLogin = (e) => {
+	const submitRegister = async (e) => {
 		e.preventDefault();
 		const errors = validate();
 
 		if (Object.keys(errors).length !== 0) {
 			setErrors(errors);
 		} else {
-			loginEmailPassword({ email, password });
+			const error = await register({ email, password });
+			if (error) {
+				setRegisterError("An error has ocurred");
+			}
 		}
 	};
 
 	return (
-		<form onSubmit={submitLogin} class={style.form}>
+		<form onSubmit={submitRegister} class={style.form}>
 			<input
 				type='text'
 				value={email}
@@ -56,8 +60,9 @@ const LoginForm = ({ loginEmailPassword }) => {
 				<span class={style.error_message}>{errors.password}</span>
 			)}
 			<Button type='submit' variety='primary' style={{ width: "100%" }}>
-				Login
+				{buttonText}
 			</Button>
+			{registerError && <p class={style.register_error}>{registerError}</p>}
 		</form>
 	);
 };

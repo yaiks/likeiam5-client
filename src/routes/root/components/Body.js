@@ -62,7 +62,7 @@ const Body = () => (
 				</div>
 			))}
 
-			<Button>More categories</Button>
+			<Button onClick={() => route("/explore")}>More categories</Button>
 		</section>
 
 		<section class={style.premium_container}>

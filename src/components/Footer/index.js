@@ -1,4 +1,4 @@
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { Link } from "preact-router/match";
 import style from "./style.css";
 
@@ -8,7 +8,6 @@ const Footer = () => (
 			<div class={style.footer_column}>
 				<Link href='/about'>get premium</Link>
 				<Link href='/explore'>explore</Link>
-				<Link href='/'>all categories</Link>
 				<Link href='/login'>login</Link>
 			</div>
 			<div class={style.footer_column}>

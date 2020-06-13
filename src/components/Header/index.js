@@ -6,7 +6,6 @@ import style from "./style.css";
 
 const Header = () => {
 	const { user, logout } = useAuth();
-	console.log("header user", user);
 
 	return (
 		<header class={style.header}>

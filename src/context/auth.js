@@ -1,7 +1,7 @@
 import { h, createContext } from "preact";
 import { useState, useEffect, useContext } from "preact/hooks";
 import { getUser } from "../services/user";
-import { loginEmailPassword } from "../services/auth";
+import { loginEmailPassword, signupEmailPassword } from "../services/auth";
 import {
 	setStorageItem,
 	getTokenFromCallback,
@@ -26,11 +26,26 @@ function AuthProvider(props) {
 		);
 	}, []);
 
-	const signin = async ({ email, password }) => {
-		const token = await loginEmailPassword({ email, password });
+	const signup = async ({ email, password }) => {
+		try {
+			const token = await signupEmailPassword({ email, password });
 
-		setStorageItem("token", token);
-		window.location = "/";
+			setStorageItem("token", token);
+			window.location = "/";
+		} catch (error) {
+			return error;
+		}
+	};
+
+	const login = async ({ email, password }) => {
+		try {
+			const token = await loginEmailPassword({ email, password });
+
+			setStorageItem("token", token);
+			window.location = "/";
+		} catch (error) {
+			return error;
+		}
 	};
 
 	const logout = () => {
@@ -43,7 +58,7 @@ function AuthProvider(props) {
 
 	return (
 		<AuthContext.Provider
-			value={{ user: state.user, signin, logout }}
+			value={{ user: state.user, signup, login, logout }}
 			{...props}
 		/>
 	);
