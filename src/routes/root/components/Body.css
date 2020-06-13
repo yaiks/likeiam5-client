@@ -21,6 +21,10 @@
 	box-shadow: 8px 8px 20px -2px rgba(0, 0, 0, 0.21);
 }
 
+.categoryFilter > a {
+	text-decoration: none;
+}
+
 .filter {
 	padding: 10px 30px;
 	text-align: center;

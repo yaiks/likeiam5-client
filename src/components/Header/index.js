@@ -19,9 +19,6 @@ const Header = () => {
 					</Link>
 					{user ? (
 						<Fragment>
-							<Link href='/profile/john' class={style.header_link}>
-								{user.username}
-							</Link>
 							<Link href='/editor' class={style.header_link}>
 								Write
 							</Link>
