@@ -38,15 +38,9 @@ const useMonetization = () => {
 				setStatus("stop");
 			}
 		});
-
-		// document.monetization.addEventListener("monetizationprogress", (e) => {
-		// 	setStatus("progress");
-		// });
 	}
 
 	return status;
 };
-
-// $pay.stronghold.co/1a185a50aa441144db287dde3f9660838b7
 
 export { useMonetization };
