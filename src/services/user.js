@@ -8,3 +8,15 @@ export const getUser = async () => {
 		return Promise.reject(error);
 	}
 };
+
+export const editMonetizationEndpoint = async ({ endpoint, userId }) => {
+	try {
+		const { data } = await client.put("/user/monetization-endpoint", {
+			endpoint,
+			userId,
+		});
+		return data;
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};

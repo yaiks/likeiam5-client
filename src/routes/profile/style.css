@@ -1,5 +1,37 @@
 .profile {
-	padding: 56px 20px;
-	min-height: 100%;
 	width: 100%;
+	display: grid;
+}
+
+.profile_item {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.item_keyname {
+	margin-right: 10px;
+	font-weight: 800;
+}
+
+.edit_input {
+	border: none;
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	margin-bottom: 20px;
+	background: none;
+	display: block;
+}
+
+.error_message {
+	display: block;
+	margin: 20px 0;
+	font-weight: 800;
+}
+
+@media only screen and (min-width: 767px) {
+	.profile {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }

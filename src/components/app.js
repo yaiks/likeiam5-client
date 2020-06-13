@@ -12,6 +12,7 @@ import Editor from "routes/editor";
 import Login from "routes/login";
 import Profile from "routes/profile";
 import Post from "routes/post";
+import About from "routes/about";
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -44,8 +45,8 @@ export default class App extends Component {
 							<Editor path='/editor/published' />
 							<Login path='/login' />
 							<Post path='/post/:postId' />
-							<Profile path='/profile/' user='me' />
-							<Profile path='/profile/:user' />
+							<Profile path='/profile' />
+							<About path='/about' />
 						</Router>
 					</AuthProvider>
 				</Provider>

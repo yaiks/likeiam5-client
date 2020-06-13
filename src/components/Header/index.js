@@ -7,6 +7,7 @@ import style from "./style.css";
 const Header = () => {
 	const { user, logout } = useAuth();
 	console.log("header user", user);
+
 	return (
 		<header class={style.header}>
 			<div class={style.header_content}>
@@ -24,6 +25,9 @@ const Header = () => {
 							</Link>
 							<Link href='/editor' class={style.header_link}>
 								Write
+							</Link>
+							<Link href='/profile' class={style.header_link}>
+								Profile
 							</Link>
 							<Button variety='secondary' onClick={() => logout()}>
 								logout
