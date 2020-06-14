@@ -6,15 +6,17 @@ const useMonetization = () => {
 
 	useEffect(() => {
 		return () => {
-			document.monetization.removeEventListener("monetizationpending", () =>
-				console.log("removed monetizationpending")
-			);
-			document.monetization.removeEventListener("monetizationstart", () =>
-				console.log("removed monetizationstart")
-			);
-			document.monetization.removeEventListener("monetizationstop", () =>
-				console.log("removed monetizationstop")
-			);
+			if (document.monetization) {
+				document.monetization.removeEventListener("monetizationpending", () =>
+					console.log("removed monetizationpending")
+				);
+				document.monetization.removeEventListener("monetizationstart", () =>
+					console.log("removed monetizationstart")
+				);
+				document.monetization.removeEventListener("monetizationstop", () =>
+					console.log("removed monetizationstop")
+				);
+			}
 
 			mountedRef.current = false;
 		};

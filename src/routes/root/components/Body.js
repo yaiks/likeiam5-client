@@ -48,17 +48,14 @@ const Body = () => {
 						</Link>
 					))}
 				</div>
-				{posts.map(
-					(post) =>
-						console.log(post) || (
-							<div class={style.post}>
-								<Link href={`/post/${post.id}`}>
-									<h3 class={style.post_title}>{post.title}</h3>
-									<p class={style.post_author}>author: {post.user.name}</p>
-								</Link>
-							</div>
-						)
-				)}
+				{posts.map((post) => (
+					<div class={style.post}>
+						<Link href={`/post/${post.id}`}>
+							<h3 class={style.post_title}>{post.title}</h3>
+							<p class={style.post_author}>author: {post.user.name}</p>
+						</Link>
+					</div>
+				))}
 
 				<Button onClick={() => route("/explore")}>More categories</Button>
 			</section>
