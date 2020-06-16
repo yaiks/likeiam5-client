@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://likeiam5-env.eba-8bvmjsn3.us-east-2.elasticbeanstalk.com/:splat"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
