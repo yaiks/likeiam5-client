@@ -83,8 +83,6 @@ export const Toolbar = ({
 			</span>
 			<span class='ql-formats'>
 				<button class='ql-link'></button>
-				<button class='ql-image'></button>
-				<button class='ql-video'></button>
 				<button class='ql-formula'></button>
 				<button class='ql-clean'></button>
 			</span>
